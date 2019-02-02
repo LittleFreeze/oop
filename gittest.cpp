@@ -4,6 +4,6 @@
 
 int main(void)
 {
-    std::cout << "Hello Git";
+    std::cout << "Hello World";
     return 0;
 }
