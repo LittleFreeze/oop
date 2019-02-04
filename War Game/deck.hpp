@@ -28,12 +28,27 @@ enum Rank
 
 class Deck
 {
-    private:
+private:
     struct Card
     {
-        /* data */
+        Rank r;
+        Suit s;
+        Card* nextCard;
     };
-    
-}
+
+    Card* TopCard;
+
+public:
+    Deck()
+    {
+        TopCard = nullptr;
+    }
+    Rank IntToRank(int);
+    Suit IntToSuit(int);
+    void pushTop(int, int);
+    void addBottom(int, int);
+    Card pullTop();
+    ~Deck();
+};
 
 #endif
