@@ -57,8 +57,7 @@ void Deck::pushTop(int r, int s)
     newCard->nextCard = TopCard;
     TopCard = newCard;
     count++;
-    std::cout << count << std:: endl;
-    std::cout << "pushing: " << r << " " << s << std::endl;
+    //std::cout << "pushing: " << r << " " << s << std::endl;
 }
 
 void Deck::addBottom(Card c)
@@ -93,8 +92,10 @@ Deck::Card Deck::pullTop()
     }
     Card *cardPtr;
     cardPtr = TopCard;
+    //std::cout << "TopCard Pointer Rank origional " << cardPtr->r << std::endl;
     TopCard = TopCard->nextCard;
     count--;
+    //std::cout << "TopCard Pointer Rank " << cardPtr->r << std::endl;
     return *cardPtr;
 }
 
@@ -118,7 +119,7 @@ Deck::Card Deck::removeCard(int i, Card* c)
         }
         previousCardPtr->nextCard = nextCardPtr;
         count--;
-        std::cout << "Removing: " << cardPtr->r << " " << cardPtr->s << std::endl;
+        //std::cout << "Removing: " << cardPtr->r << " " << cardPtr->s << std::endl;
         return *cardPtr;
     }
     
@@ -157,4 +158,14 @@ void Deck::ShuffleDeck()
             pushTop(c.r,c.s);
         }
     }
+}
+
+int Deck::getCount()
+{
+    return count;
+}
+
+Deck::Card Deck::readTop()
+{
+    return *TopCard;
 }

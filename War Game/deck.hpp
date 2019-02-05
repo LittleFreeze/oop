@@ -57,18 +57,22 @@ public:
     Card removeCard(int, Card*);
     void GenerateDeck();
     void ShuffleDeck();
+    int getCount();
+    Card readTop();
     ~Deck()
     {
         Card *cardPtr;
         Card *nextCardPtr;
 
         cardPtr = TopCard;
+        std::cout << TopCard;
 
-        while(cardPtr != nullptr)
+        while(count > 0)
         {
             nextCardPtr = cardPtr->nextCard;
             delete cardPtr;
             cardPtr = nextCardPtr;
+            count--;
         }
     }
 };
