@@ -24,34 +24,36 @@ int main(void)
     };
 
     Card c;
-
+    
     for(int i = 0; i < 52; i++)
     {
         if(i % 2 == 1)
         {
             pdeck.addBottom(deck.pullTop());
+            std::cout << "P Top " << pdeck.readTop()->r << std::endl;
         }
         else
         {
             cdeck.addBottom(deck.pullTop());
+            //std::cout << "C Top " << cdeck.readTop()->r << std::endl;
         }
+    std::cout << "C Top " << cdeck.readTop()->r << std::endl;
     }
-    std::cout << "PDeck Top: " << pdeck.readTop().r;
-    Card pCard;
-    Card cCard;
+
 
     while(pdeck.getCount() != 0 && cdeck.getCount() != 0)
     {
-        std::cout << pdeck.readTop().r << std::endl;
-        std::cout << cdeck.readTop().r << std::endl;
-
-        if(pdeck.readTop().r > cdeck.readTop().r)
+        //std::cout << "P Top " << pdeck.readTop()->r << std::endl;
+        //std::cout << "C Top " << cdeck.readTop()->r << std::endl;
+        //std::cout << "D Top " << deck.readTop()->r << std::endl;
+        
+        if(pdeck.readTop()->r > cdeck.readTop()->r)
         {
             std::cout << "Player wins" << std::endl;
             pStoreDeck.addBottom(pdeck.pullTop());
             pStoreDeck.addBottom(cdeck.pullTop());
         }
-        else if(pdeck.readTop().r < cdeck.readTop().r)
+        else if(pdeck.readTop()->r < cdeck.readTop()->r)
         {
             std::cout << "Computer wins" << std::endl;
             cStoreDeck.addBottom(pdeck.pullTop());

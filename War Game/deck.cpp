@@ -62,15 +62,22 @@ void Deck::pushTop(int r, int s)
 
 void Deck::addBottom(Card c)
 {
+    
+
     Card *cardPtr;
     Card *newCard = & c;
     /*newCard = new Card;
     newCard->r = IntToRank(r);
     newCard->s = IntToSuit(s);*/
     newCard->nextCard = nullptr;
-    if(!TopCard)
+    
+    if(!TopCard || count == 0)
     {
+        //std::cout << "Here" << std::endl;
+        //std::cout << c.r << std::endl;
         TopCard = newCard;
+        //std::cout << TopCard->r << std::endl;
+        TopCard->nextCard = nullptr;
     }
     else
     {
@@ -88,7 +95,7 @@ Deck::Card Deck::pullTop()
 {
     if(!TopCard)
     {
-        return *(new Card);
+        std::cout << "No Cards to Pull from";
     }
     Card *cardPtr;
     cardPtr = TopCard;
@@ -165,7 +172,7 @@ int Deck::getCount()
     return count;
 }
 
-Deck::Card Deck::readTop()
+Deck::Card* Deck::readTop()
 {
-    return *TopCard;
+    return TopCard;
 }

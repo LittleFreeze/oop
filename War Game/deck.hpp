@@ -58,7 +58,7 @@ public:
     void GenerateDeck();
     void ShuffleDeck();
     int getCount();
-    Card readTop();
+    Card* readTop();
     ~Deck()
     {
         Card *cardPtr;
