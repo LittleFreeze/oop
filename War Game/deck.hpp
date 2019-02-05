@@ -41,18 +41,18 @@ private:
     };
 
     Card* TopCard;
-    int count = 0;
+    int count;
 
 public:
     Deck()
     {
         TopCard = nullptr;
+        count = 0;
     }
-    void test();
     Rank IntToRank(int);
     Suit IntToSuit(int);
     void pushTop(int, int);
-    void addBottom(int, int);
+    void addBottom(Card);
     Card pullTop();
     Card removeCard(int, Card*);
     void GenerateDeck();
