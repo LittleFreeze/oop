@@ -5,7 +5,7 @@
         "name": "Run C/C++",
         "type": "cppdbg",
         "request": "launch",
-        "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+        "program": "${workspaceFolder}/jack.exe",
         "args": [],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",

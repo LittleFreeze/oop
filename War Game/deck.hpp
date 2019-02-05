@@ -1,6 +1,10 @@
 #ifndef DECK_HPP_INCLUDED
 #define DECK_HPP_INCLUDED
 
+#include <cstdlib>
+#include <iostream>
+
+
 enum Suit
 {
     Hearts,
@@ -44,12 +48,13 @@ public:
     {
         TopCard = nullptr;
     }
+    void test();
     Rank IntToRank(int);
     Suit IntToSuit(int);
     void pushTop(int, int);
     void addBottom(int, int);
     Card pullTop();
-    Card removeCard(int);
+    Card removeCard(int, Card*);
     void GenerateDeck();
     void ShuffleDeck();
     ~Deck()

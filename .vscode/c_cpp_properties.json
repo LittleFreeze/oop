@@ -13,17 +13,22 @@
             ],
             "includePath": [
                 "${workspaceFolder}/include",
+                "${workspaceFolder}",
                 "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++",
                 "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++/x86_64-w64-mingw32",
                 "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++/backward",
                 "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include",
                 "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/../../../../include",
                 "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include-fixed",
-                "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/../../../../x86_64-w64-mingw32/include"
+                "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/../../../../x86_64-w64-mingw32/include",
+                "C:/MinGW/include",
+                "C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++",
+                "C:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/tr1"
             ],
             "browse": {
                 "path": [
                     "${workspaceFolder}/include",
+                    "${workspaceFolder}",
                     "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++",
                     "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++/x86_64-w64-mingw32",
                     "C:/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++/backward",
