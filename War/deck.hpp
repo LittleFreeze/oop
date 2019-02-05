@@ -65,7 +65,7 @@ public:
         Card *nextCardPtr;
 
         cardPtr = TopCard;
-        std::cout << TopCard;
+        //std::cout << TopCard;
 
         while(count > 0)
         {

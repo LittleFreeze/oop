@@ -62,13 +62,11 @@ void Deck::pushTop(int r, int s)
 
 void Deck::addBottom(Card c)
 {
-    
-
     Card *cardPtr;
-    Card *newCard = & c;
-    /*newCard = new Card;
-    newCard->r = IntToRank(r);
-    newCard->s = IntToSuit(s);*/
+    Card *newCard;  // = & c;
+    newCard = new Card;
+    newCard->r = IntToRank(c.r);
+    newCard->s = IntToSuit(c.s);
     newCard->nextCard = nullptr;
     
     if(!TopCard || count == 0)
@@ -102,6 +100,7 @@ Deck::Card Deck::pullTop()
     //std::cout << "TopCard Pointer Rank origional " << cardPtr->r << std::endl;
     TopCard = TopCard->nextCard;
     count--;
+    //std::cout << ".TopCard Pointer Rank " << TopCard->r << std::endl;
     //std::cout << "TopCard Pointer Rank " << cardPtr->r << std::endl;
     return *cardPtr;
 }
@@ -174,5 +173,6 @@ int Deck::getCount()
 
 Deck::Card* Deck::readTop()
 {
+    //std::cout << "TopCard " << TopCard->r << std::endl;
     return TopCard;
 }
