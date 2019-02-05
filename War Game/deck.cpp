@@ -1,4 +1,6 @@
 #include "deck.hpp"
+#include <iostream>
+#include <cstdlib>
 
 Rank Deck::IntToRank(int i)
 {
@@ -56,10 +58,12 @@ void Deck::pushTop(int r, int s)
     newCard->s = IntToSuit(s);
     newCard->nextCard = TopCard;
     TopCard = newCard;
+    count++;
 }
 
 void Deck::addBottom(int r, int s)
 {
+    Card *cardPtr;
     Card *newCard;
     newCard = new Card;
     newCard->r = IntToRank(r);
@@ -68,6 +72,80 @@ void Deck::addBottom(int r, int s)
     if(!TopCard)
     {
         TopCard = newCard;
+    }
+    else
+    {
+        cardPtr = TopCard;
+        while(cardPtr->nextCard != nullptr)
+        {
+            cardPtr = cardPtr->nextCard;
+        }
+        cardPtr->nextCard = newCard;
+    }
+    count++;
+}
+
+Deck::Card Deck::pullTop()
+{
+    if(!TopCard)
+    {
+        
+        return *(new Card);
+    }
+    Card *cardPtr;
+    cardPtr = TopCard;
+    TopCard = TopCard->nextCard;
+    count--;
+    return *cardPtr;
+}
+
+Deck::Card Deck::removeCard(int i, Card* c)
+{
+    if(i < count)
+    {
+        std::cerr("not enough cards")
+    }
+    else
+    {
+        Card *previousCardPtr;
+        Card *cardPtr;
+        Card *nextCardPtr;
+        cardPtr = c;
+        for(int j = 0; j < i; j++)
+        {
+            prevousCardPtr = cardPtr;
+            cardPtr = nextCardPtr;
+            nextCardPtr = cardPtr->nextCard;
+        }
+        prevousCardPtr->nextCard = nextCardPtr;
+        count--;
+        return *cardPtr;
+    }
+    
+}
+
+void Deck::GenerateDeck()
+{
+    for(int i = 0; i < 4; i++)
+    {
+        for(int j = 0; j < 13; j++)
+        {
+            pushTop(j,i);
+        }
+    }
+    ShuffleDeck();
+}
+
+void Deck::ShuffleDeck()
+{
+    if(!TopCard)
+    {
+        std::cerr("no Cards");
+    }
+    else
+    {
+        int i = count;
+        Card *old
     }
     
 }

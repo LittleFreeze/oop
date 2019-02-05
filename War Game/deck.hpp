@@ -37,6 +37,7 @@ private:
     };
 
     Card* TopCard;
+    int count = 0;
 
 public:
     Deck()
@@ -48,7 +49,23 @@ public:
     void pushTop(int, int);
     void addBottom(int, int);
     Card pullTop();
-    ~Deck();
+    Card removeCard(int);
+    void GenerateDeck();
+    void ShuffleDeck();
+    ~Deck()
+    {
+        Card *cardPtr;
+        Card *nextCardPtr;
+
+        cardPtr = TopCard;
+
+        while(cardPtr != nullptr)
+        {
+            nextCardPtr = cardPtr->nextCard;
+            delete cardPtr;
+            cardPtr = nextCardPtr;
+        }
+    }
 };
 
 #endif
