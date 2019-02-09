@@ -1,59 +1,33 @@
 #include "deck.hpp"
 
-Rank Deck::IntToRank(int i)
+int Deck::getRank(char RAndS)
 {
-    switch(i)
-    {
-        case 0 : return Ace;
-            break;
-        case 1 : return Two;
-            break;
-        case 2 : return Three;
-            break;
-        case 3 : return Four;
-            break; 
-        case 4 : return Five;
-            break;
-        case 5 : return Six;
-            break;
-        case 6 : return Seven;
-            break;
-        case 7 : return Eight;
-            break;
-        case 8 : return Nine;
-            break;
-        case 9 : return Ten;
-            break;
-        case 10 : return Jack;
-            break;
-        case 11 : return Queen;
-            break;
-        case 12 : return King;
-            break;
-    }
+    return RAndS >> 2;
 }
 
-Suit Deck::IntToSuit(int i)
+int Deck::getSuit(char RAndS)
 {
-    switch(i)
-    {
-        case 0 : return Hearts;
-            break;
-        case 1 : return Clubs;
-            break;
-        case 2 : return Spades;
-            break;
-        case 3 : return Diamonds;
-            break;
-    }
+    char temp = 0b00000011;
+    char Suit = RAndS & temp;
+    return Suit;
+}
+
+char Deck::intsToSAndR(int r, int s)
+{
+    char RAndS;
+
+    RAndS = r;
+    RAndS = RAndS << 2;
+    RAndS = RAndS + s;
+
+    return RAndS;
 }
 
 void Deck::pushTop(int r, int s)
 {
     Card *newCard;
     newCard = new Card;
-    newCard->r = IntToRank(r);
-    newCard->s = IntToSuit(s);
+    newCard->RAndS = intsToSAndR(r,s);
     newCard->nextCard = TopCard;
     TopCard = newCard;
     count++;
@@ -65,8 +39,7 @@ void Deck::addBottom(Card c)
     Card *cardPtr;
     Card *newCard;  // = & c;
     newCard = new Card;
-    newCard->r = IntToRank(c.r);
-    newCard->s = IntToSuit(c.s);
+    newCard->RAndS = intsToSAndR(getRank(c.RAndS),getSuit(c.RAndS));
     newCard->nextCard = nullptr;
     
     if(!TopCard || count == 0)
@@ -161,7 +134,7 @@ void Deck::ShuffleDeck()
             j = rand() % i;
             std::cout << std::endl;
             Card c = removeCard(j, oldDeckTop);
-            pushTop(c.r,c.s);
+            pushTop(getRank(c.RAndS),getSuit(c.RAndS));
         }
     }
 }

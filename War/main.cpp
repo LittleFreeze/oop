@@ -18,8 +18,7 @@ int main(void)
 
     struct Card
     {
-        Rank r;
-        Suit s;
+        char RAndS;
         Card* nextCard;
     };
 
@@ -56,10 +55,10 @@ int main(void)
         while(pdeck.getCount() != 0 && cdeck.getCount() != 0)
         {
             
-            if(pdeck.readTop()->r > cdeck.readTop()->r)
+            if(pdeck.getRank(pdeck.readTop()->RAndS) > cdeck.getRank(cdeck.readTop()->RAndS))
             {
-                std::cout << "Player Top " << pdeck.readTop()->r << std::endl;
-                std::cout << "Computer Top " << cdeck.readTop()->r << std::endl;
+                std::cout << "Player Top " << pdeck.getRank(pdeck.readTop()->RAndS) << std::endl;
+                std::cout << "Computer Top " << cdeck.getRank(cdeck.readTop()->RAndS) << std::endl;
                 std::cout << "Player wins" << std::endl;
                 pStoreDeck.addBottom(pdeck.pullTop());
                 pStoreDeck.addBottom(cdeck.pullTop());
@@ -69,10 +68,10 @@ int main(void)
                         pStoreDeck.addBottom(tempDeck.pullTop());
                 }
             }
-            else if(pdeck.readTop()->r < cdeck.readTop()->r)
+            else if(pdeck.getRank(pdeck.readTop()->RAndS) < cdeck.getRank(cdeck.readTop()->RAndS))
             {
-                std::cout << "Player Top " << pdeck.readTop()->r << std::endl;
-                std::cout << "Computer Top " << cdeck.readTop()->r << std::endl;
+                std::cout << "Player Top " << pdeck.getRank(pdeck.readTop()->RAndS) << std::endl;
+                std::cout << "Computer Top " << cdeck.getRank(cdeck.readTop()->RAndS) << std::endl;
                 std::cout << "Computer wins" << std::endl;
                 cStoreDeck.addBottom(pdeck.pullTop());
                 cStoreDeck.addBottom(cdeck.pullTop());
@@ -84,8 +83,8 @@ int main(void)
             }
             else
             {
-                std::cout << "Player Top " << pdeck.readTop()->r << std::endl;
-                std::cout << "Computer Top " << cdeck.readTop()->r << std::endl;
+                std::cout << "Player Top " << pdeck.getRank(pdeck.readTop()->RAndS) << std::endl;
+                std::cout << "Computer Top " << cdeck.getRank(cdeck.readTop()->RAndS) << std::endl;
                 std::cout << "Draw" << std::endl;
                 std::cout << "Placing down face down cards." << std::endl;
                 tempDeck.addBottom(pdeck.pullTop());

@@ -4,39 +4,12 @@
 #include <cstdlib>
 #include <iostream>
 
-
-enum Suit
-{
-    Hearts,
-    Clubs,
-    Spades,
-    Diamonds
-};
-
-enum Rank
-{
-    Ace,
-    Two,
-    Three,
-    Four,
-    Five,
-    Six,
-    Seven,
-    Eight,
-    Nine,
-    Ten,
-    Jack,
-    Queen,
-    King
-};
-
 class Deck
 {
 private:
     struct Card
     {
-        Rank r;
-        Suit s;
+        char RAndS;
         Card* nextCard;
     };
 
@@ -49,8 +22,9 @@ public:
         TopCard = nullptr;
         count = 0;
     }
-    Rank IntToRank(int);
-    Suit IntToSuit(int);
+    int getRank(char);
+    int getSuit(char);
+    char intsToSAndR(int, int);
     void pushTop(int, int);
     void addBottom(Card);
     Card pullTop();
