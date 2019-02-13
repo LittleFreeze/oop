@@ -7,47 +7,21 @@
 int main(void)
 {
     srand(time(0));
-    Deck deck;
-    deck.GenerateDeck();
-
-    Deck pdeck;
-    Deck pStoreDeck;
-    Deck cdeck;
-    Deck cStoreDeck;
-    Deck tempDeck;
-
-    struct Card
-    {
-        char RAndS;
-        Card* nextCard;
-    };
+    
+    
 
     Card c;
-    // std::cout << "d1.1 count " << deck.getCount() << std::endl;
-  //  pdeck.addBottom(deck.pullTop());
-   // cdeck.addBottom(deck.pullTop());
-   /*
-    std::cout << "P1.1 Top " << pdeck.readTop()->r << std::endl;
-    std::cout << "P1.1 count " << pdeck.getCount() << std::endl;
-    std::cout << "P1.2 Top " << pdeck.readTop()->r << std::endl;
-    std::cout << "d1.2 count " << deck.getCount() << std::endl;
-    */
 
     for(int i = 0; i < 52; i++)
     {
         if(i % 2 == 0)
         {
             pdeck.addBottom(deck.pullTop());
-            
         }
         else
         {
             cdeck.addBottom(deck.pullTop());
-            
         }
-      // std::cout << "C2 Top " << cdeck.readTop()->r << std::endl;
-
-        
     }
   
     while((pdeck.getCount()+pStoreDeck.getCount()) != 0 && (cdeck.getCount()+cStoreDeck.getCount()) != 0)
