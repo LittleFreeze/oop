@@ -11,4 +11,4 @@ Update:
 
 I changed the Rank and Suit enums to a single char that is stored as 0b00rrrrss
 I also added the war class and created functions using the code from the origional main funciton
-This class represents the game of war and keeps track of the number of rounds left along with the number of wins for each player
+This class represents the game of war and it keeps track of the number of rounds left along with the number of wins for each player along with the decks of cards used throughout the game
