@@ -7,12 +7,12 @@
 
 int main(void)
 {
-    srand(time(0));
+    srand(time(0)); //Seed Random
 
-    War w;
-    w.setupWar();
-    w.runWar();
-    w.declareWinner();
+    War w; //Create War Class
+    w.setupWar(); //Run a function to setup the game
+    w.runWar(); //Run a function to start the game
+    w.declareWinner(); //Run a function to declare the winner of the game
   
     
     return 0;

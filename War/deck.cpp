@@ -1,53 +1,49 @@
 #include "deck.hpp"
 
-int Deck::getRank(char RAndS)
+int Deck::getRank(char RAndS) //Function to get rank of passed card
 {
     return RAndS >> 2;
 }
 
-int Deck::getSuit(char RAndS)
+int Deck::getSuit(char RAndS) //Function to get suit of passed card
 {
     char temp = 0b00000011;
     char Suit = RAndS & temp;
     return Suit;
 }
 
-char Deck::intsToSAndR(int r, int s)
+char Deck::intsToSAndR(int r, int s) //Funtion to convert two integers into character to represent rank and suit
 {
     char RAndS;
 
     RAndS = r;
     RAndS = RAndS << 2;
-    RAndS = RAndS + s;
+    RAndS = RAndS + s; //Store rank and suit as 0b00rrrrss
 
     return RAndS;
 }
 
-void Deck::pushTop(int r, int s)
+void Deck::pushTop(int r, int s) //Funtion to create a new card and add it to the top of the deck
 {
-    Card *newCard;
+    Card *newCard; 
     newCard = new Card;
     newCard->RAndS = intsToSAndR(r,s);
     newCard->nextCard = TopCard;
     TopCard = newCard;
     count++;
-    //std::cout << "pushing: " << r << " " << s << std::endl;
 }
 
-void Deck::addBottom(Card c)
+void Deck::addBottom(Card c) //Function to add card to bottom of the deck
 {
     Card *cardPtr;
-    Card *newCard;  // = & c;
+    Card *newCard;  
     newCard = new Card;
     newCard->RAndS = intsToSAndR(getRank(c.RAndS),getSuit(c.RAndS));
     newCard->nextCard = nullptr;
     
     if(!TopCard || count == 0)
     {
-        //std::cout << "Here" << std::endl;
-        //std::cout << c.r << std::endl;
         TopCard = newCard;
-        //std::cout << TopCard->r << std::endl;
         TopCard->nextCard = nullptr;
     }
     else
@@ -62,7 +58,7 @@ void Deck::addBottom(Card c)
     count++;
 }
 
-Deck::Card Deck::pullTop()
+Deck::Card Deck::pullTop() //Function to pull off the top card of the deck
 {
     if(!TopCard)
     {
@@ -70,15 +66,13 @@ Deck::Card Deck::pullTop()
     }
     Card *cardPtr;
     cardPtr = TopCard;
-    //std::cout << "TopCard Pointer Rank origional " << cardPtr->r << std::endl;
     TopCard = TopCard->nextCard;
     count--;
-    //std::cout << ".TopCard Pointer Rank " << TopCard->r << std::endl;
-    //std::cout << "TopCard Pointer Rank " << cardPtr->r << std::endl;
+
     return *cardPtr;
 }
 
-Deck::Card Deck::removeCard(int i, Card* c)
+Deck::Card Deck::removeCard(int i, Card* c) //Function to remove a card at passed position from a deck
 {
     if(i > count)
     {
@@ -98,13 +92,12 @@ Deck::Card Deck::removeCard(int i, Card* c)
         }
         previousCardPtr->nextCard = nextCardPtr;
         count--;
-        //std::cout << "Removing: " << cardPtr->r << " " << cardPtr->s << std::endl;
         return *cardPtr;
     }
     
 }
 
-void Deck::GenerateDeck()
+void Deck::GenerateDeck() //Function to fill deck with 52 cards
 {
     for(int i = 0; i < 4; i++)
     {
@@ -116,7 +109,7 @@ void Deck::GenerateDeck()
     ShuffleDeck();
 }
 
-void Deck::ShuffleDeck()
+void Deck::ShuffleDeck() //Function to shuffle deck
 {
     
     int j = 0;
@@ -139,13 +132,12 @@ void Deck::ShuffleDeck()
     }
 }
 
-int Deck::getCount()
+int Deck::getCount() //Function to return number of cards in deck
 {
     return count;
 }
 
-Deck::Card* Deck::readTop()
+Deck::Card* Deck::readTop() //Function to return pointer to top card
 {
-    //std::cout << "TopCard " << TopCard->r << std::endl;
     return TopCard;
 }
