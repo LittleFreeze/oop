@@ -20,7 +20,7 @@ int board::getSpeed()
     return speed;
 }
 
-void board::setFieldPositon(int playerx, int playery, int set)
+void board::setFieldPosition(int playerx, int playery, int set)
 {
     field[playerx][playery] = set;
 }
