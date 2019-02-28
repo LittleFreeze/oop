@@ -46,6 +46,11 @@ int player::getDir()
   return dir;
 }
 
+Color player::getColor()
+{
+  return color;
+}
+
 void player::setX(int a)
 {
   x = a;

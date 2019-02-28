@@ -17,13 +17,11 @@ void game::setupGame()
 	texture.loadFromFile("background.jpg");
 	Sprite sBackground(texture);
 
-    
-
-	Sprite sprite;
+    sprite = new Sprite;
 	RenderTexture t;
 	t.create(b->getBoardWidth(), b->getBoardHeight());
 	t.setSmooth(true);
-	sprite.setTexture(t.getTexture());
+	sprite->setTexture(t.getTexture());
     t.clear();  t.draw(sBackground);
 }
 
@@ -61,8 +59,8 @@ void game::startGame()
 			field[p2->x][p2->y]=1;
 	
 			CircleShape c(3);
-			c.setPosition(p1->x,p1->y); c.setFillColor(p1->color);	t.draw(c);
-			c.setPosition(p2->x,p2->y); c.setFillColor(p2->color);	t.draw(c);
+			c.setPosition(p1->getX(),p1->getY()); c.setFillColor(p1->getColor());	t.draw(c);
+			c.setPosition(p2->getX(),p2->getY()); c.setFillColor(p2->getColor());	t.draw(c);
 			t.display();	
 		}
 

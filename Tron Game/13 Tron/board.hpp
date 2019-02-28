@@ -18,6 +18,7 @@ public:
     int getBoardWidth();
     int getBoardHeight();
     int getSpeed();
+    bool getField();
 
 };
 

@@ -19,3 +19,8 @@ int board::getSpeed()
 {
     return speed;
 }
+
+bool board::getField()
+{
+    return field;
+}

@@ -13,6 +13,7 @@ private:
     board *b;
     player *p1, *p2;
     RenderWindow *window;
+    Sprite *sprite;
 public:
     void setupGame();
     void startGame();
