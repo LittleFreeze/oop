@@ -53,10 +53,10 @@ void game::startGame()
 		for(int i=0;i<b->getSpeed();i++)
 		{
 			p1->tick(); p2->tick();
-			if (field[p1->getX()][p1->getY()]==1) Game=0; 
-			if (field[p2->getX()][p2->getY()]==1) Game=0;
-			field[p1->getX()][p1->getY()]=1; 
-			field[p2->getX()][p2->getY()]=1;
+			if (b->checkFieldPosition(p1->getX(), p1->getY())) Game=0; 
+			if (b->checkFieldPosition(p2->getX(), p2->getY())) Game=0;
+			b->setFieldPosition(p1->getX(),p2->getY(),1); 
+			b->setFieldPosition(p2->getX(),p2->getY(),1); 
 	
 			CircleShape c(3);
 			c.setPosition(p1->getX(),p1->getY()); c.setFillColor(p1->getPColor());	t->draw(c);

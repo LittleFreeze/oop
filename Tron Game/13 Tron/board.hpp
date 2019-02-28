@@ -18,7 +18,8 @@ public:
     int getBoardWidth();
     int getBoardHeight();
     int getSpeed();
-    bool getField();
+    void setFieldPosition(int, int, int);
+    bool checkFieldPosition(int, int);
 
 };
 
