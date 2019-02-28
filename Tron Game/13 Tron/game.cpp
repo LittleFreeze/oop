@@ -5,10 +5,10 @@ void game::setupGame()
     b = new board();
     p1 = new player(Color::Red);
     p2 = new player(Color::Green);
-    p1.setBoardWidth(b.getBoardWidth());
-    p2.setBoardWidth(b.getBoardWidth());
-    p1.setBoardHeight(b.getBoardHeight());
-    p2.setBoardHeight(b.getBoardHeight());
+    p1->setBoardWidth(b.getBoardWidth());
+    p2->setBoardWidth(b.getBoardWidth());
+    p1->setBoardHeight(b.getBoardHeight());
+    p2->setBoardHeight(b.getBoardHeight());
     
     RenderWindow window(VideoMode(W, H), "The Tron Game!");
     window.setFramerateLimit(60);
