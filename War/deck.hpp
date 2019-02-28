@@ -9,7 +9,7 @@ class Deck
 private:
     struct Card
     {
-        unsigned char RAndS; //8 bit int to represent rank and suit
+        unsigned char RAndS; //8 bit int to represent rank and suit or joker and color
         Card* nextCard; //Pointer to next card in linked list
     };
 
@@ -22,17 +22,23 @@ public:
         TopCard = nullptr;
         count = 0;
     }
-    int getRank(char); //Function to get rank of passed card
-    int getSuit(char); //Function to get suit of passed card
+    int getRank(unsigned char); //Function to get rank of passed card
+    int getSuit(unsigned char); //Function to get suit of passed card
+    int getJoker(unsigned char);
+    int getColor(unsigned char);
     char intsToSAndR(int, int); //Funtion to convert two integers into character to represent rank and suit
+    char intToJAndC(int); //Function to convert integer into char that represents joker and color
     void pushTop(int, int); //Funtion to create a new card and add it to the top of the deck
+    void pushJTop(int); //Function to create a new joker card integer equals 1 for red, 0 for black
     void addBottom(Card); //Function to add card to bottom of the deck
     Card pullTop(); //Function to pull off the top card of the deck
     Card removeCard(int, Card*); //Function to remove a card at passed position from a deck
     void GenerateDeck(); //Function to fill deck with 52 cards
+    void GenerateDeckWithJokers();  //Function to fill deck with 54 cards
     void ShuffleDeck(); //Function to shuffle deck
     int getCount(); //Function to return number of cards in deck
     Card* readTop(); //Function to return pointer to top card
+    void printDeck(); //Funtion to print every card of the deck
     ~Deck()
     {
         Card *cardPtr;
