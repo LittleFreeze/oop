@@ -10,7 +10,7 @@ void game::setupGame()
     p1->setBoardHeight(b->getBoardHeight());
     p2->setBoardHeight(b->getBoardHeight());
     
-    RenderWindow window(VideoMode(W, H), "The Tron Game!");
+    RenderWindow window(VideoMode(b->getBoardWidth(), b->getBoardHeight()), "The Tron Game!");
     window.setFramerateLimit(60);
 
 	Texture texture;
