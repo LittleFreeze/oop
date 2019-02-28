@@ -27,5 +27,5 @@ void board::setFieldPositon(int playerx, int playery, int set)
 
 bool board::checkFieldPosition(int playerx, int playery)
 {
-    return field[playerx][playery] 1= 0;
+    return field[playerx][playery] != 0;
 }
