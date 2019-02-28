@@ -1,5 +1,7 @@
 #include "player.hpp"
 
+using namespace sf;
+
 player::player(Color c)
 {
     x=rand() % W;
