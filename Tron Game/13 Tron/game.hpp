@@ -12,6 +12,7 @@ class game
 private:
     board *b;
     player *p1, *p2;
+    RenderWindow *window;
 public:
     void setupGame();
     void startGame();

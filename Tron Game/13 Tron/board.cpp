@@ -14,3 +14,8 @@ int board::getBoardHeight()
 {
     return H;
 }
+
+int board::getSpeed()
+{
+    return speed;
+}

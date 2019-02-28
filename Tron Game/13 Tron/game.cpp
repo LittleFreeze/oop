@@ -10,8 +10,8 @@ void game::setupGame()
     p1->setBoardHeight(b->getBoardHeight());
     p2->setBoardHeight(b->getBoardHeight());
     
-    RenderWindow window(VideoMode(b->getBoardWidth(), b->getBoardHeight()), "The Tron Game!");
-    window.setFramerateLimit(60);
+    window = new RenderWindow (VideoMode(b->getBoardWidth(), b->getBoardHeight()), "The Tron Game!");
+    window->setFramerateLimit(60);
 
 	Texture texture;
 	texture.loadFromFile("background.jpg");
@@ -31,13 +31,13 @@ void game::startGame()
 {
     bool Game=1;
 
-    while (window.isOpen())
+    while (window->isOpen())
     {
         Event e;
-        while (window.pollEvent(e))
+        while (window->pollEvent(e))
         {
             if (e.type == Event::Closed)
-                window.close();
+                window->close();
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::Left)) if (p1->getDir()!=2) p1->setDir(1);
@@ -52,9 +52,9 @@ void game::startGame()
 
 		if (!Game)	continue;
 
-		for(int i=0;i<speed;i++)
+		for(int i=0;i<b->getSpeed();i++)
 		{
-			p1.tick(); p2.tick();
+			p1->tick(); p2->tick();
 			if (field[p1->x][p1->y]==1) Game=0; 
 			if (field[p2->x][p2->y]==1) Game=0;
 			field[p1->x][p1->y]=1; 
@@ -67,8 +67,8 @@ void game::startGame()
 		}
 
 	   ////// draw  ///////
-		window.clear();
-		window.draw(sprite);
- 		window.display();
+		window->clear();
+		window->draw(sprite);
+ 		window->display();
 	}
 }

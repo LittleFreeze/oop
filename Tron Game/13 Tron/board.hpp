@@ -17,6 +17,7 @@ public:
     board();
     int getBoardWidth();
     int getBoardHeight();
+    int getSpeed();
 
 };
 
