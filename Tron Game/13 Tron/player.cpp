@@ -46,7 +46,7 @@ int player::getDir()
   return dir;
 }
 
-Color player::getColor()
+Color player::getPColor()
 {
   return color;
 }

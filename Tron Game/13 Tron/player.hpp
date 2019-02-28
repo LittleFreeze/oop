@@ -22,7 +22,7 @@ public:
     int getX();
     int getY();
     int getDir();
-    Color getColor();
+    Color getPColor();
     void setX(int);
     void setY(int);
     void setDir(int);
