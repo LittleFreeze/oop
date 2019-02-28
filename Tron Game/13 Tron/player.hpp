@@ -16,7 +16,7 @@ private:
 public:
     player(Color);
     void tick();
-    Vector3f getColor();
+    sf::Vector3f getColor();
     void setBoardWidth(int);
     void setBoardHeight(int);
     int getX();

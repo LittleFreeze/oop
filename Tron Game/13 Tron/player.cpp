@@ -1,7 +1,5 @@
 #include "player.hpp"
 
-using namespace sf;
-
 player::player(Color c)
 {
     x=rand() % W;
@@ -20,8 +18,8 @@ void player::tick()
   if (y>=H) y=0;  if (y<0) y=H-1;
 }
 
-Vector3f player::getColor()
-    {return Vector3f(color.r,color.g,color.b);}
+sf::Vector3f player::getColor()
+    {return sf::Vector3f(color.r,color.g,color.b);}
 
 void player::setBoardWidth(int width)
 {
