@@ -18,8 +18,8 @@ void player::tick()
   if (y>=H) y=0;  if (y<0) y=H-1;
 }
 
-sf::Vector3f player::getColor()
-    {return sf::Vector3f(color.r,color.g,color.b);}
+Vector3f player::getColor()
+    {return Vector3f(color.r,color.g,color.b);}
 
 void player::setBoardWidth(int width)
 {

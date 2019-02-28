@@ -1,7 +1,7 @@
 #ifndef PLAYER_HPP_INCLUDED
 #define PLAYER_HPP_INCLUDED
 
-#include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics.hpp>
 #include <time.h>
 
 using namespace sf;
@@ -16,7 +16,7 @@ private:
 public:
     player(Color);
     void tick();
-    sf::Vector3f getColor();
+    Vector3f getColor();
     void setBoardWidth(int);
     void setBoardHeight(int);
     int getX();
