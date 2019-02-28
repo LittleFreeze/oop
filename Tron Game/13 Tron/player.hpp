@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics/Color.hpp>
 
+using namespace sf;
+
 class player
 { 
 private:

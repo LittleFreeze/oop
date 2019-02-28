@@ -4,6 +4,8 @@
 #include "board.hpp"
 #include "player.hpp"
 
+using namespace sf;
+
 class game
 {
 private:
