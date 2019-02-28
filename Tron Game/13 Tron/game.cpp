@@ -66,7 +66,7 @@ void game::startGame()
 
 	   ////// draw  ///////
 		window->clear();
-		window->draw(sprite);
+		window->draw(*sprite);
  		window->display();
 	}
 }
