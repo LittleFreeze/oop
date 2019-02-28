@@ -40,15 +40,15 @@ void game::startGame()
                 window.close();
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::Left)) if (p1->dir!=2) p1->dir=1;
-	    if (Keyboard::isKeyPressed(Keyboard::Right)) if (p1->dir!=1)  p1->dir=2;
-	    if (Keyboard::isKeyPressed(Keyboard::Up)) if (p1->dir!=0) p1->dir=3;
-		if (Keyboard::isKeyPressed(Keyboard::Down)) if (p1->dir!=3) p1->dir=0;
+		if (Keyboard::isKeyPressed(Keyboard::Left)) if (p1->getDir()!=2) p1->setDir(1);
+	    if (Keyboard::isKeyPressed(Keyboard::Right)) if (p1->getDir()!=1)  p1->setDir(2);
+	    if (Keyboard::isKeyPressed(Keyboard::Up)) if (p1->getDir()!=0) p1->setDir(3);
+		if (Keyboard::isKeyPressed(Keyboard::Down)) if (p1->getDir()!=3) p1->setDir(0);
 
-		if (Keyboard::isKeyPressed(Keyboard::A)) if (p2->dir!=2) p2->dir=1;
-	    if (Keyboard::isKeyPressed(Keyboard::D)) if (p2->dir!=1)  p2->dir=2;
-	    if (Keyboard::isKeyPressed(Keyboard::W)) if (p2->dir!=0) p2->dir=3;
-		if (Keyboard::isKeyPressed(Keyboard::S)) if (p2->dir!=3) p2->dir=0;
+		if (Keyboard::isKeyPressed(Keyboard::A)) if (p2->getDir()!=2) p2->setDir(1);
+	    if (Keyboard::isKeyPressed(Keyboard::D)) if (p2->getDir()!=1)  p2->setDir(2);
+	    if (Keyboard::isKeyPressed(Keyboard::W)) if (p2->getDir()!=0) p2->setDir(3);
+		if (Keyboard::isKeyPressed(Keyboard::S)) if (p2->getDir()!=3) p2->setDir(0);
 
 		if (!Game)	continue;
 

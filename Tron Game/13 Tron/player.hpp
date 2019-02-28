@@ -19,6 +19,12 @@ public:
     Vector3f getColor();
     void setBoardWidth(int);
     void setBoardHeight(int);
+    int getX();
+    int getY();
+    int getDir();
+    void setX(int);
+    void setY(int);
+    void setDir(int);
 };
 
 #endif

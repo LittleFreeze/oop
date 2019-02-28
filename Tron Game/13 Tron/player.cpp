@@ -30,3 +30,33 @@ void player::setBoardHeight(int height)
 {
     H = height;
 }
+
+int player::getX()
+{
+  return x;
+}
+
+int player::getY()
+{
+  return y;
+}
+
+int player::getDir()
+{
+  return dir;
+}
+
+void player::setX(int a)
+{
+  x = a;
+}
+
+void player::setY(int a)
+{
+  y = a;
+}
+
+void player::setDir(int a)
+{
+  dir = a;
+}
