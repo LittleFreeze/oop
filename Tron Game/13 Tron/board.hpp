@@ -9,8 +9,8 @@ using namespace sf;
 class board
 {
 private:
-    const int W=600;
-    const int H=480;
+    int W=600;
+    int H=480;
     int speed = 4;
     bool field[W][H]={0};
 public:
