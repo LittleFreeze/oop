@@ -2,6 +2,7 @@
 #define PLAYER_HPP_INCLUDED
 
 #include <SFML/Graphics/Color.hpp>
+#include <time.h>
 
 using namespace sf;
 
