@@ -9,10 +9,10 @@ using namespace sf;
 class board
 {
 private:
-    int W;
-    int H;
-    int speed;
-    bool field[W][H]={0};
+    int W = 600;
+    int H = 480;
+    int speed = 4;
+    bool field[W][H];
 public:
     board();
     int getBoardWidth();
