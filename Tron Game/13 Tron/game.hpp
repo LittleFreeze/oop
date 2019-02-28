@@ -14,6 +14,7 @@ private:
     player *p1, *p2;
     RenderWindow *window;
     Sprite *sprite;
+    RenderTexture *t;
 public:
     void setupGame();
     void startGame();
