@@ -12,7 +12,7 @@ private:
     int W = 600;
     int H = 480;
     int speed = 4;
-    bool *field[600] = new bool[W][H];
+    bool field[600][480] = {0};
 public:
     board();
     int getBoardWidth();
