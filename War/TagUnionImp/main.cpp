@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "deck.hpp"
-#include "war.hpp"
+
 
 int main(void)
 {

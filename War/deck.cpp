@@ -12,13 +12,13 @@ int Deck::getSuit(unsigned char RAndS) //Function to get suit of passed card
     return Suit;
 }
 
-int Deck::getJoker(unsigned char RAndS)
+int Deck::getJoker(unsigned char RAndS) //Function to determine card type
 {
     unsigned char temp = RAndS >> 7;
     return temp;
 }
 
-int Deck::getColor(unsigned char RAndS)
+int Deck::getColor(unsigned char RAndS) //Function to determine card color if joker
 {
     unsigned char temp = RAndS >> 6;
     unsigned char mask = 0x00000001;
@@ -37,7 +37,7 @@ char Deck::intsToSAndR(int r, int s) //Funtion to convert two integers into char
     return RAndS;
 }
 
-char Deck::intToJAndC(int c)
+char Deck::intToJAndC(int c) //Function to 
 {
     char RAndS;
 
