@@ -16,8 +16,8 @@ int main(void)
 */
 
     Deck d;
-    //d.GenerateDeckWithJokers();
-    d.GenerateDeck();
+    d.GenerateDeckWithJokers();
+    //d.GenerateDeck();
     d.printDeck();
     
     return 0;

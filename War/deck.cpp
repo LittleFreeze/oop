@@ -1,5 +1,4 @@
 #include "deck.hpp"
-#include <bitset>
 
 int Deck::getRank(unsigned char RAndS) //Function to get rank of passed card
 {
@@ -106,32 +105,46 @@ Deck::Card Deck::pullTop() //Function to pull off the top card of the deck
     return *cardPtr;
 }
 
-Deck::Card Deck::removeCard(int i, Card* c) //Function to remove a card at passed position from a deck
+Deck::Card Deck::removeCard(int i, Card*& c) //Function to remove a card at passed position from a deck
 {
+    Card *previousCardPtr = c;
+    Card *cardPtr;
+    Card *nextCardPtr;
+    cardPtr = c;
+    int count = getNumberOfCards(c);
     if(i > count)
     {
-        std::cerr <<"not enough cards";
+        std::cerr << "not enough cards" <<std::endl;
+        cardPtr = NULL;
     }
     else
     {
-        Card *previousCardPtr = c;
-        Card *cardPtr;
-        Card *nextCardPtr;
-        cardPtr = c;
-        for(int j = 0; j < i; j++)
+        if(i == 1)
         {
-            previousCardPtr = cardPtr;
-            std::cout << getRank(cardPtr->RAndS) << " " << getSuit(cardPtr->RAndS) << std::endl;
-            cardPtr = nextCardPtr;
-            nextCardPtr = cardPtr->nextCard;
+            if(count == 1)
+            {
+                return *c;
+            }
+            else
+            {
+                cardPtr = c;
+                c = cardPtr->nextCard;            
+            }
         }
-        std::cout <<"P " << getRank(previousCardPtr->RAndS) << " " << getSuit(previousCardPtr->RAndS) << std::endl;
-        std::cout <<"N " << getRank(nextCardPtr->RAndS) << " " << getSuit(nextCardPtr->RAndS) << std::endl;
-        previousCardPtr->nextCard = nextCardPtr;
+        else
+        {
+            for(int j = 0; j < i-1; j++)
+            {
+                previousCardPtr = cardPtr;
+                cardPtr = cardPtr->nextCard;
+                nextCardPtr = cardPtr->nextCard;
+            }
+            previousCardPtr->nextCard = nextCardPtr;
+        }
         count--;
-        return *cardPtr;
+        cardPtr->nextCard = NULL;
     }
-    
+    return *cardPtr;
 }
 
 void Deck::GenerateDeck() //Function to fill deck with 52 cards
@@ -143,8 +156,7 @@ void Deck::GenerateDeck() //Function to fill deck with 52 cards
             pushTop(j,i);
         }
     }
-    //ShuffleDeck();
-    removeCard(5,TopCard);
+    ShuffleDeck();
 }
 
 void Deck::GenerateDeckWithJokers()
@@ -158,7 +170,7 @@ void Deck::GenerateDeckWithJokers()
     }
     pushJTop(0);
     pushJTop(1);
-    //ShuffleDeck();
+    ShuffleDeck();
 }
 
 void Deck::ShuffleDeck() //Function to shuffle deck
@@ -167,7 +179,7 @@ void Deck::ShuffleDeck() //Function to shuffle deck
     int j = 0;
     if(!TopCard)
     {
-        std::cerr << "no Cards";
+        std::cerr << "no Cards" << std::endl;
     }
     else
     {
@@ -177,23 +189,22 @@ void Deck::ShuffleDeck() //Function to shuffle deck
         for(int i = count; i > 0; i--)
         {
             j = rand() % i +1;
-            std::cout << std::endl;
             Card c = removeCard(j, oldDeckTop);
-
-            std::bitset<8> x(c.RAndS);
-            std::cout << x << " ";
-            std::cout << getRank(c.RAndS) << " " << getSuit(c.RAndS) << std::endl;
-            //if(getJoker(c.RAndS) == 0)
-            //{
-            pushTop(getRank(c.RAndS),getSuit(c.RAndS));
-            //}
-            //else
-            //{
-            //    pushJTop(getColor(c.RAndS));
-            //}
-            
+            pushTop(getRank(c.RAndS),getSuit(c.RAndS));     
         }
     }
+}
+
+int Deck::getNumberOfCards(Card* c)
+{
+    int count = 0;
+    Card* currentCard = c;
+    while(currentCard)
+    {
+        count++;
+        currentCard = currentCard->nextCard;
+    }
+    return count;
 }
 
 int Deck::getCount() //Function to return number of cards in deck

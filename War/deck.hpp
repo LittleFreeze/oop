@@ -32,10 +32,11 @@ public:
     void pushJTop(int); //Function to create a new joker card integer equals 1 for red, 0 for black
     void addBottom(Card); //Function to add card to bottom of the deck
     Card pullTop(); //Function to pull off the top card of the deck
-    Card removeCard(int, Card*); //Function to remove a card at passed position from a deck
+    Card removeCard(int, Card*&); //Function to remove a card at passed position from a deck
     void GenerateDeck(); //Function to fill deck with 52 cards
     void GenerateDeckWithJokers();  //Function to fill deck with 54 cards
     void ShuffleDeck(); //Function to shuffle deck
+    int getNumberOfCards(Card*);
     int getCount(); //Function to return number of cards in deck
     Card* readTop(); //Function to return pointer to top card
     void printDeck(); //Funtion to print every card of the deck
@@ -46,12 +47,11 @@ public:
 
         cardPtr = TopCard;
 
-        while(count > 0)
+        while(cardPtr)
         {
             nextCardPtr = cardPtr->nextCard;
             delete cardPtr;
             cardPtr = nextCardPtr;
-            count--;
         }
     }
 };
