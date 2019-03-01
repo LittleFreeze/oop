@@ -37,7 +37,7 @@ char Deck::intsToSAndR(int r, int s) //Funtion to convert two integers into char
     return RAndS;
 }
 
-char Deck::intToJAndC(int c) //Function to 
+char Deck::intToJAndC(int c) //Function to convert an int to a joker and color card
 {
     char RAndS;
 
@@ -56,7 +56,7 @@ void Deck::pushTop(int r, int s) //Funtion to create a new card and add it to th
     count++;
 }
 
-void Deck::pushJTop(int c)
+void Deck::pushJTop(int c) //Function to add joker card to top of the deck
 {
     Card *newCard; 
     newCard = new Card;
@@ -159,7 +159,7 @@ void Deck::GenerateDeck() //Function to fill deck with 52 cards
     ShuffleDeck();
 }
 
-void Deck::GenerateDeckWithJokers()
+void Deck::GenerateDeckWithJokers() //Function to generate deck with jokers
 {
     for(int i = 0; i < 4; i++)
     {
@@ -195,7 +195,7 @@ void Deck::ShuffleDeck() //Function to shuffle deck
     }
 }
 
-int Deck::getNumberOfCards(Card* c)
+int Deck::getNumberOfCards(Card* c) //Function to count the number of cards in the deck
 {
     int count = 0;
     Card* currentCard = c;
@@ -217,7 +217,7 @@ Deck::Card* Deck::readTop() //Function to return pointer to top card
     return TopCard;
 }
 
-void Deck::printDeck()
+void Deck::printDeck() //Function to print all of the cards in the deck
 {
     Card* currentCard = TopCard;
     while(currentCard != nullptr)
