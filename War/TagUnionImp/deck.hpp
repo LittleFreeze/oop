@@ -19,7 +19,7 @@ enum Rank
     Jack,
     Queen,
     King
-}
+};
 
 enum Suit
 {
@@ -27,32 +27,71 @@ enum Suit
     Diamonds,
     Spades,
     Clubs
-}
+};
 
 enum Color
 {
     Red,
     Black
-}
+};
+
+enum PlayingCardKind
+{
+    Standard, 
+    Joker
+};
 
 class StandardCard
 {
 private:
-    
+    Rank r;
+    Suit s;
+public:
+    StandardCard(Rank a, Suit b)
+    {
+        r = a;
+        s = b;
+    }
 };
 
 class JokerCard
 {
-
+private:
+    Color c;
+public:
+    JokerCard(Color a)
+    {
+        c = a;
+    }
 };
 
 class Deck
 {
 private:
-    struct Card
+    class Card
     {
-        
+    private:
+        union PlayingCardData
+        {
+            PlayingCardData(Rank r, Suit s) 
+                : sc(r,s)
+            {}
+
+            PlayingCardData(Color c)
+                : jc(c)
+            {}
+
+            StandardCard sc;
+            JokerCard jc;
+        };
+
+        PlayingCardData data;
+        PlayingCardKind tag;
+    public:
+        Card()
+        {}
         Card* nextCard; //Pointer to next card in linked list
+        
     };
 
     Card* TopCard; //Pointer to the top card of the deck
