@@ -114,6 +114,10 @@ private:
         {
             return tag == Joker;
         }
+        PlayingCardData* getData()
+        {
+            return data;
+        }
         Card* nextCard; //Pointer to next card in linked list
         
     };
@@ -127,7 +131,8 @@ public:
         TopCard = nullptr;
         count = 0;
     }
-    
+    Rank IntToRank(int);
+    Suit IntToSuit(int);
     char intsToSAndR(int, int); //Funtion to convert two integers into character to represent rank and suit
     char intToJAndC(int); //Function to convert integer into char that represents joker and color
     void pushTop(Rank, Suit); //Funtion to create a new card and add it to the top of the deck

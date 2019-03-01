@@ -1,5 +1,53 @@
 #include "deck.hpp"
 
+Rank Deck::IntToRank(int i)
+{
+    switch(i)
+    {
+        case 0 : return Ace;
+            break;
+        case 1 : return Two;
+            break;
+        case 2 : return Three;
+            break;
+        case 3 : return Four;
+            break; 
+        case 4 : return Five;
+            break;
+        case 5 : return Six;
+            break;
+        case 6 : return Seven;
+            break;
+        case 7 : return Eight;
+            break;
+        case 8 : return Nine;
+            break;
+        case 9 : return Ten;
+            break;
+        case 10 : return Jack;
+            break;
+        case 11 : return Queen;
+            break;
+        case 12 : return King;
+            break;
+    }
+}
+
+Suit Deck::IntToSuit(int i)
+{
+    switch(i)
+    {
+        case 0 : return Hearts;
+            break;
+        case 1 : return Diamonds;
+            break;
+        case 2 : return Spades;
+            break;
+        case 3 : return Clubs;
+            break;
+    }
+}
+
 char Deck::intsToSAndR(int r, int s) //Funtion to convert two integers into character to represent rank and suit
 {
     char RAndS;
@@ -48,11 +96,11 @@ void Deck::addBottom(Card c) //Function to add card to bottom of the deck
     
     if(!(c.isJoker()))
     {
-        newCard->setData(c.data->c);
+        newCard->setData(c.getData()->jc.getColor());
     }
     else
     {
-        newCard->setData(c.data->r,c.data->s);
+        newCard->setData(c.getData()->sc.getRank(),c.getData()->sc.getSuit());
     }
     
     newCard->nextCard = nullptr;
@@ -119,7 +167,6 @@ Deck::Card Deck::removeCard(int i, Card*& c) //Function to remove a card at pass
             for(int j = 0; j < i-1; j++)
             {
                 previousCardPtr = cardPtr;
-                std::cout << getRank(cardPtr->RAndS) << " " << getSuit(cardPtr->RAndS) << std::endl;
                 cardPtr = cardPtr->nextCard;
                 nextCardPtr = cardPtr->nextCard;
             }
@@ -137,11 +184,10 @@ void Deck::GenerateDeck() //Function to fill deck with 52 cards
     {
         for(int j = 0; j < 13; j++)
         {
-            pushTop(j,i);
+            pushTop(IntToRank(j),IntToSuit(i));
         }
     }
     ShuffleDeck();
-    std::cout << "Here 1" << std::endl;
 }
 
 void Deck::GenerateDeckWithJokers()
@@ -150,12 +196,12 @@ void Deck::GenerateDeckWithJokers()
     {
         for(int j = 0; j < 13; j++)
         {
-            pushTop(j,i);
+            pushTop(IntToRank(j),IntToSuit(i));
         }
     }
-    pushJTop(0);
-    pushJTop(1);
-    //ShuffleDeck();
+    pushJTop(Black);
+    pushJTop(Red);
+    ShuffleDeck();
 }
 
 void Deck::ShuffleDeck() //Function to shuffle deck
@@ -176,7 +222,7 @@ void Deck::ShuffleDeck() //Function to shuffle deck
         {
             j = rand() % i +1;
             Card c = removeCard(j, oldDeckTop);
-            pushTop(getRank(c.RAndS),getSuit(c.RAndS));     
+            pushTop(c.getData()->sc.getRank(),c.getData()->sc.getSuit());     
         }
     }
 }
@@ -208,15 +254,15 @@ void Deck::printDeck()
     Card* currentCard = TopCard;
     while(currentCard != nullptr)
     {
-        if(getJoker(currentCard->RAndS) == 0)
+        if(currentCard->isJoker())
         {
-            std::cout << "Rank: " << getRank(currentCard->RAndS);
-            std::cout << " Suit: " << getSuit(currentCard->RAndS) << std::endl;
+            std::cout << "Rank: " << currentCard->getData()->sc.getRank();
+            std::cout << " Suit: " << currentCard->getData()->sc.getSuit() << std::endl;
         }
         else
         {
-            std::cout << "Joker: " << getJoker(currentCard->RAndS);
-            std::cout << " Color: " << getColor(currentCard->RAndS) << std::endl;
+            std::cout << "Rank: Joker";
+            std::cout << " Color: " << currentCard->getData()->jc.getColor() << std::endl;
         }
         currentCard = currentCard->nextCard;
     }
