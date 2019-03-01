@@ -226,7 +226,10 @@ void Deck::ShuffleDeck() //Function to shuffle deck
         {
             j = rand() % i +1;
             Card c = removeCard(j, oldDeckTop);
-            pushTop(c.getData()->sc.getRank(),c.getData()->sc.getSuit());     
+            if(!(c.isJoker()))
+                pushTop(c.getData()->sc.getRank(),c.getData()->sc.getSuit()); 
+            else
+                pushJTop(c.getData()->jc.getColor());
         }
     }
 }
