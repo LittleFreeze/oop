@@ -52,6 +52,14 @@ public:
         r = a;
         s = b;
     }
+    Rank getRank() //Function to get rank of passed card
+    {
+        return r;
+    }
+    Suit getSuit() //Function to get suit of passed card
+    {
+        return s;
+    }
 };
 
 class JokerCard
@@ -62,6 +70,10 @@ public:
     JokerCard(Color a)
     {
         c = a;
+    }
+    Color getColor()
+    {
+        return c;
     }
 };
 
@@ -85,11 +97,23 @@ private:
             JokerCard jc;
         };
 
-        PlayingCardData data;
+        PlayingCardData *data;
         PlayingCardKind tag;
     public:
-        Card()
-        {}
+        void setData(Rank a, Suit b)
+        {
+            data = new PlayingCardData(a,b);
+            tag = Standard;
+        }
+        void setData(Color a)
+        {
+            data = new PlayingCardData(a);
+            tag = Joker;
+        }
+        bool isJoker()
+        {
+            return tag == Joker;
+        }
         Card* nextCard; //Pointer to next card in linked list
         
     };
@@ -103,14 +127,11 @@ public:
         TopCard = nullptr;
         count = 0;
     }
-    int getRank(unsigned char); //Function to get rank of passed card
-    int getSuit(unsigned char); //Function to get suit of passed card
-    int getJoker(unsigned char);
-    int getColor(unsigned char);
+    
     char intsToSAndR(int, int); //Funtion to convert two integers into character to represent rank and suit
     char intToJAndC(int); //Function to convert integer into char that represents joker and color
-    void pushTop(int, int); //Funtion to create a new card and add it to the top of the deck
-    void pushJTop(int); //Function to create a new joker card integer equals 1 for red, 0 for black
+    void pushTop(Rank, Suit); //Funtion to create a new card and add it to the top of the deck
+    void pushJTop(Color); //Function to create a new joker card integer equals 1 for red, 0 for black
     void addBottom(Card); //Function to add card to bottom of the deck
     Card pullTop(); //Function to pull off the top card of the deck
     Card removeCard(int, Card*&); //Function to remove a card at passed position from a deck

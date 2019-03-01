@@ -1,31 +1,5 @@
 #include "deck.hpp"
 
-int Deck::getRank(unsigned char RAndS) //Function to get rank of passed card
-{
-    return RAndS >> 2;
-}
-
-int Deck::getSuit(unsigned char RAndS) //Function to get suit of passed card
-{
-    char temp = 0b00000011;
-    char Suit = RAndS & temp;
-    return Suit;
-}
-
-int Deck::getJoker(unsigned char RAndS)
-{
-    unsigned char temp = RAndS >> 7;
-    return temp;
-}
-
-int Deck::getColor(unsigned char RAndS)
-{
-    unsigned char temp = RAndS >> 6;
-    unsigned char mask = 0x00000001;
-    unsigned char color = temp & mask;
-    return color;
-}
-
 char Deck::intsToSAndR(int r, int s) //Funtion to convert two integers into character to represent rank and suit
 {
     char RAndS;
@@ -46,21 +20,21 @@ char Deck::intToJAndC(int c)
     return RAndS;
 }
 
-void Deck::pushTop(int r, int s) //Funtion to create a new card and add it to the top of the deck
+void Deck::pushTop(Rank r, Suit s) //Funtion to create a new card and add it to the top of the deck
 {
     Card *newCard; 
     newCard = new Card;
-    newCard->RAndS = intsToSAndR(r,s);
+    newCard->setData(r,s);
     newCard->nextCard = TopCard;
     TopCard = newCard;
     count++;
 }
 
-void Deck::pushJTop(int c)
+void Deck::pushJTop(Color c)
 {
     Card *newCard; 
     newCard = new Card;
-    newCard->RAndS = intToJAndC(c);
+    newCard->setData(c);
     newCard->nextCard = TopCard;
     TopCard = newCard;
     count++;
@@ -71,7 +45,16 @@ void Deck::addBottom(Card c) //Function to add card to bottom of the deck
     Card *cardPtr;
     Card *newCard;  
     newCard = new Card;
-    newCard->RAndS = intsToSAndR(getRank(c.RAndS),getSuit(c.RAndS));
+    
+    if(!(c.isJoker()))
+    {
+        newCard->setData(c.data->c);
+    }
+    else
+    {
+        newCard->setData(c.data->r,c.data->s);
+    }
+    
     newCard->nextCard = nullptr;
     
     if(!TopCard || count == 0)
