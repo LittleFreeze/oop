@@ -2,50 +2,54 @@
 
 Rank Deck::IntToRank(int i)
 {
+    Rank rtdata;
     switch(i)
     {
-        case 0 : return Ace;
+        case 0 : rtdata = Ace;
             break;
-        case 1 : return Two;
+        case 1 : rtdata = Two;
             break;
-        case 2 : return Three;
+        case 2 : rtdata = Three;
             break;
-        case 3 : return Four;
+        case 3 : rtdata = Four;
             break; 
-        case 4 : return Five;
+        case 4 : rtdata = Five;
             break;
-        case 5 : return Six;
+        case 5 : rtdata = Six;
             break;
-        case 6 : return Seven;
+        case 6 : rtdata = Seven;
             break;
-        case 7 : return Eight;
+        case 7 : rtdata = Eight;
             break;
-        case 8 : return Nine;
+        case 8 : rtdata = Nine;
             break;
-        case 9 : return Ten;
+        case 9 : rtdata = Ten;
             break;
-        case 10 : return Jack;
+        case 10 : rtdata = Jack;
             break;
-        case 11 : return Queen;
+        case 11 : rtdata = Queen;
             break;
-        case 12 : return King;
+        case 12 : rtdata = King;
             break;
     }
+    return rtdata;
 }
 
 Suit Deck::IntToSuit(int i)
 {
+    Suit rtdata;
     switch(i)
     {
-        case 0 : return Hearts;
+        case 0 : rtdata = Hearts;
             break;
-        case 1 : return Diamonds;
+        case 1 : rtdata = Diamonds;
             break;
-        case 2 : return Spades;
+        case 2 : rtdata = Spades;
             break;
-        case 3 : return Clubs;
+        case 3 : rtdata = Clubs;
             break;
     }
+    return rtdata;
 }
 
 char Deck::intsToSAndR(int r, int s) //Funtion to convert two integers into character to represent rank and suit
@@ -254,7 +258,7 @@ void Deck::printDeck()
     Card* currentCard = TopCard;
     while(currentCard != nullptr)
     {
-        if(currentCard->isJoker())
+        if(!(currentCard->isJoker()))
         {
             std::cout << "Rank: " << currentCard->getData()->sc.getRank();
             std::cout << " Suit: " << currentCard->getData()->sc.getSuit() << std::endl;

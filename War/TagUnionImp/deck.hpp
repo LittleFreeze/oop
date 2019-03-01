@@ -154,12 +154,11 @@ public:
 
         cardPtr = TopCard;
 
-        while(count > 0)
+        while(cardPtr)
         {
             nextCardPtr = cardPtr->nextCard;
             delete cardPtr;
             cardPtr = nextCardPtr;
-            count--;
         }
     }
 };
