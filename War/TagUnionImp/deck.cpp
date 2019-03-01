@@ -52,24 +52,15 @@ Suit Deck::IntToSuit(int i)
     return rtdata;
 }
 
-char Deck::intsToSAndR(int r, int s) //Funtion to convert two integers into character to represent rank and suit
+Color Deck::IntToColor(int i)
 {
-    char RAndS;
-
-    RAndS = r;
-    RAndS = RAndS << 2;
-    RAndS = RAndS + s; //Store rank and suit as 0b00rrrrss
-
-    return RAndS;
-}
-
-char Deck::intToJAndC(int c)
-{
-    char RAndS;
-
-    RAndS = 10 + c;
-    RAndS = RAndS << 6;
-    return RAndS;
+    if(i == 0)
+        return Red;
+    else
+    {
+        return Black;
+    }
+    
 }
 
 void Deck::pushTop(Rank r, Suit s) //Funtion to create a new card and add it to the top of the deck
@@ -221,7 +212,6 @@ void Deck::ShuffleDeck() //Function to shuffle deck
         Card *oldDeckTop;
         oldDeckTop = TopCard;
         TopCard = nullptr;
-        std::cout << "Here 2" << std::endl;
         for(int i = count; i > 0; i--)
         {
             j = rand() % i +1;
@@ -263,13 +253,13 @@ void Deck::printDeck()
     {
         if(!(currentCard->isJoker()))
         {
-            std::cout << "Rank: " << currentCard->getData()->sc.getRank();
-            std::cout << " Suit: " << currentCard->getData()->sc.getSuit() << std::endl;
+            std::cout << "Rank: " << IntToRank(currentCard->getData()->sc.getRank());
+            std::cout << " Suit: " << IntToSuit(currentCard->getData()->sc.getSuit()) << std::endl;
         }
         else
         {
             std::cout << "Rank: Joker";
-            std::cout << " Color: " << currentCard->getData()->jc.getColor() << std::endl;
+            std::cout << " Color: " << IntToColor(currentCard->getData()->jc.getColor()) << std::endl;
         }
         currentCard = currentCard->nextCard;
     }

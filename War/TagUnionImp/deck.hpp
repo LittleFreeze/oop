@@ -52,11 +52,11 @@ public:
         r = a;
         s = b;
     }
-    Rank getRank() //Function to get rank of passed card
+    Rank getRank() //Function to get rank of standard card
     {
         return r;
     }
-    Suit getSuit() //Function to get suit of passed card
+    Suit getSuit() //Function to get suit of standard card
     {
         return s;
     }
@@ -71,7 +71,7 @@ public:
     {
         c = a;
     }
-    Color getColor()
+    Color getColor() //Function to get color of joker card
     {
         return c;
     }
@@ -83,7 +83,7 @@ private:
     class Card
     {
     private:
-        union PlayingCardData
+        union PlayingCardData //Union class to hold standard and joker class
         {
             PlayingCardData(Rank r, Suit s) 
                 : sc(r,s)
@@ -100,17 +100,17 @@ private:
         PlayingCardData *data;
         PlayingCardKind tag;
     public:
-        void setData(Rank a, Suit b)
+        void setData(Rank a, Suit b) //Function to get data of card
         {
             data = new PlayingCardData(a,b);
             tag = Standard;
         }
-        void setData(Color a)
+        void setData(Color a) //Funciton to set data of card
         {
             data = new PlayingCardData(a);
             tag = Joker;
         }
-        bool isJoker()
+        bool isJoker() //Function to check if card is a joker
         {
             return tag == Joker;
         }
@@ -131,10 +131,9 @@ public:
         TopCard = nullptr;
         count = 0;
     }
-    Rank IntToRank(int);
-    Suit IntToSuit(int);
-    char intsToSAndR(int, int); //Funtion to convert two integers into character to represent rank and suit
-    char intToJAndC(int); //Function to convert integer into char that represents joker and color
+    Rank IntToRank(int); //Funciton to convert int to Rank
+    Suit IntToSuit(int); //Function to convert int to Suit
+    Color IntToColor(int); //Function to convert int to Color
     void pushTop(Rank, Suit); //Funtion to create a new card and add it to the top of the deck
     void pushJTop(Color); //Function to create a new joker card integer equals 1 for red, 0 for black
     void addBottom(Card); //Function to add card to bottom of the deck
@@ -143,7 +142,7 @@ public:
     void GenerateDeck(); //Function to fill deck with 52 cards
     void GenerateDeckWithJokers();  //Function to fill deck with 54 cards
     void ShuffleDeck(); //Function to shuffle deck
-    int getNumberOfCards(Card*);
+    int getNumberOfCards(Card*); //Function to count the number of cards in deck
     int getCount(); //Function to return number of cards in deck
     Card* readTop(); //Function to return pointer to top card
     void printDeck(); //Funtion to print every card of the deck
