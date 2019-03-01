@@ -35,12 +35,23 @@ enum Color
     Black
 }
 
+class StandardCard
+{
+private:
+    
+};
+
+class JokerCard
+{
+
+};
+
 class Deck
 {
 private:
     struct Card
     {
-        unsigned char RAndS; //8 bit int to represent rank and suit or joker and color
+        
         Card* nextCard; //Pointer to next card in linked list
     };
 
