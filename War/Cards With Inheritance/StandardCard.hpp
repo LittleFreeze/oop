@@ -4,13 +4,13 @@
 #include "deck.hpp"
 #include "Card.hpp"
 
-class StandardCard : public Card
+class StandardCard : public Card //Class to represent standard cards
 {
 private:
     Rank rank;
     Suit suit;
 public:
-    StandardCard(Rank a, Suit b)
+    StandardCard(Rank a, Suit b) //Constructor function
     {
         rank = a;
         suit = b;
@@ -18,7 +18,7 @@ public:
         setKind(Standard);
     }
 
-    void setStandardCardColor(Suit a)
+    void setStandardCardColor(Suit a) //Function to set color of the standard card using the inherited function setColor
     {
         if(a == Diamonds || a == Hearts)
         {
@@ -41,7 +41,7 @@ public:
         return suit;
     }
 
-    void printCard()
+    void printCard() //Funciton to print the suit and rank of the standard card
     {
         std::cout << suit << " " << rank << std::endl;
     }

@@ -40,7 +40,7 @@ enum PlayingCardKind
     Joker
 };
 
-class Card
+class Card //Class to represent cards
     {
     private:
 
@@ -48,24 +48,24 @@ class Card
         PlayingCardKind cardKind;
 
     public:
-        virtual void printCard() {};
+        virtual void printCard() {}; //Inherited virtual function to print the card
 
-        void setColor(Color color)
+        void setColor(Color color) //Inherited function to set the color of the card
         {
             cardColor = color;
         }
 
-        Color getColor()
+        Color getColor() //Inherited function to get the color of the card
         {
             return cardColor;
         }
 
-        void setKind(PlayingCardKind kind)
+        void setKind(PlayingCardKind kind) //Inherited function to set the type of card (Standard or Joker)
         {
             cardKind = kind;
         }
 
-        PlayingCardKind getKind()
+        PlayingCardKind getKind() //Inherited function to get the type of card
         {
             return cardKind;
         }

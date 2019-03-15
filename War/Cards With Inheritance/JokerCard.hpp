@@ -4,18 +4,18 @@
 #include "deck.hpp"
 #include "Card.hpp"
 
-class JokerCard : public Card
+class JokerCard : public Card //Class to represent joker cards
 {
 private:
 
 public:
-    JokerCard(Color color)
+    JokerCard(Color color) //Constructor function
     {
         setColor(color);
         setKind(Joker);
     }
 
-    void printCard()
+    void printCard() //Function to print the color of the joker card
     {
         std::cout << "Joker " << getColor() << std::endl;
     }

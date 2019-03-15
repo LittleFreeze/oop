@@ -7,6 +7,12 @@ I used a full class to represent a deck of cards, and a struct to represent each
 I kept the deck in order by using single linked list of the cards.
 Each player then had their own deck that would be used to keep track of their cards.
 
+Update (3/14/19):
+
+I moddified the card, joker card, and standard card classes to allow for inheritance.
+I gave the card class the color and kind variables which are inherited by the standard card and joker card classes.
+I also added various functions that are inherited and used by the standard card and joker card classes.
+
 Update:
 
 I changed the Rank and Suit enums to a single char that is stored as 0b00rrrrss
