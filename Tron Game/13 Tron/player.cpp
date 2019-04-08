@@ -16,6 +16,8 @@ void player::tick()
   if (dir==3) y-=1;
 	if (x>=W) x=0;  if (x<0) x=W-1;
   if (y>=H) y=0;  if (y<0) y=H-1;
+  if (jump == true) jumpCount++;
+  if (jumpCount == 10) jump = false;
 }
 
 Vector3f player::getColor()
@@ -51,6 +53,11 @@ Color player::getPColor()
   return color;
 }
 
+bool player::getJump()
+{
+  return jump;
+}
+
 void player::setX(int a)
 {
   x = a;
@@ -64,4 +71,10 @@ void player::setY(int a)
 void player::setDir(int a)
 {
   dir = a;
+}
+
+void player::PJump()
+{
+  jump = true;
+  jumpCount = 0;
 }

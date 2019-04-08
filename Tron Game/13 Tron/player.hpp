@@ -13,6 +13,8 @@ private:
     Color color;
     int W;
     int H;
+    bool jump;
+    int jumpCount;
 public:
     player(Color);
     void tick();
@@ -22,10 +24,12 @@ public:
     int getX();
     int getY();
     int getDir();
+    bool getJump();
     Color getPColor();
     void setX(int);
     void setY(int);
     void setDir(int);
+    void PJump();
 };
 
 #endif
