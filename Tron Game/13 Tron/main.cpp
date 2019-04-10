@@ -7,7 +7,6 @@ using namespace sf;
 int main()
 {
 	srand(time(0));
-
 	game G;
 	G.setupGame();
 	G.startGame();

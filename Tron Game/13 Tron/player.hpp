@@ -7,7 +7,7 @@
 using namespace sf;
 
 class player
-{ 
+{
 private:
     int x,y,dir;
     Color color;
@@ -16,7 +16,7 @@ private:
     bool jump;
     int jumpCount;
 public:
-    player(Color);
+    player(Color,int,int);
     void tick();
     Vector3f getColor();
     void setBoardWidth(int);

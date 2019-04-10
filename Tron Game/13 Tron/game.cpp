@@ -2,14 +2,20 @@
 
 void game::setupGame()
 {
+    int p1c = rand()%4;
+    int p2c = rand()%4;
+    while(p1c == p2c)
+    {
+        p2c = rand()%4;
+    }
     b = new board();
-    p1 = new player(Color::Red);
-    p2 = new player(Color::Green);
+    p1 = new player(colorList[p1c],b->getBoardWidth(),b->getBoardHeight());
+    p2 = new player(colorList[p2c],b->getBoardWidth(),b->getBoardHeight());
     p1->setBoardWidth(b->getBoardWidth());
     p2->setBoardWidth(b->getBoardWidth());
     p1->setBoardHeight(b->getBoardHeight());
     p2->setBoardHeight(b->getBoardHeight());
-    
+
     window = new RenderWindow (VideoMode(b->getBoardWidth(), b->getBoardHeight()), "The Tron Game!");
     window->setFramerateLimit(60);
 
@@ -42,7 +48,7 @@ void game::startGame()
 	    if (Keyboard::isKeyPressed(Keyboard::Right)) if (p1->getDir()!=1)  p1->setDir(2);
 	    if (Keyboard::isKeyPressed(Keyboard::Up)) if (p1->getDir()!=0) p1->setDir(3);
 		if (Keyboard::isKeyPressed(Keyboard::Down)) if (p1->getDir()!=3) p1->setDir(0);
-		if (Keyboard::isKeyPressed(Keyboard::Num0)) if (p1->getJump()!=true) p1->PJump();
+		if (Keyboard::isKeyPressed(Keyboard::Numpad0)) if (p1->getJump()!=true) p1->PJump();
 
 		if (Keyboard::isKeyPressed(Keyboard::A)) if (p2->getDir()!=2) p2->setDir(1);
 	    if (Keyboard::isKeyPressed(Keyboard::D)) if (p2->getDir()!=1)  p2->setDir(2);
@@ -57,15 +63,16 @@ void game::startGame()
 			p1->tick(); p2->tick();
 			if(p1->getJump() != true)
 			{
-				if (b->checkFieldPosition(p1->getX(), p1->getY())) Game=0; 
-				b->setFieldPosition(p1->getX(),p2->getY(),1);
+				if (b->checkFieldPosition(p1->getX(), p1->getY())) Game=0;
+
+				b->setFieldPosition(p1->getX(),p1->getY(),1);
 			}
 			if(p2->getJump() != true)
 			{
-				if (b->checkFieldPosition(p2->getX(), p2->getY())) Game=0;
-				b->setFieldPosition(p2->getX(),p2->getY(),1); 
+                if (b->checkFieldPosition(p2->getX(), p2->getY())) Game=0;
+				b->setFieldPosition(p2->getX(),p2->getY(),1);
 			}
-	
+
 			CircleShape c(3);
 			if(p1->getJump() != true)
 			{
@@ -75,7 +82,7 @@ void game::startGame()
 			if(p2->getJump() != true)
 			{
 				c.setPosition(p2->getX(),p2->getY()); c.setFillColor(p2->getPColor());	t->draw(c);
-				t->display();	
+				t->display();
 			}
 		}
 

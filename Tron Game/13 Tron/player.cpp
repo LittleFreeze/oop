@@ -1,6 +1,6 @@
 #include "player.hpp"
 
-player::player(Color c)
+player::player(Color c,int W, int H)
 {
     x=rand() % W;
     y=rand() % H;

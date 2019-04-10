@@ -15,10 +15,11 @@ private:
     RenderWindow *window;
     Sprite *sprite;
     RenderTexture *t;
+    Color colorList [4] = {Color::Red,Color::Blue,Color::Green,Color::Yellow};
 public:
     void setupGame();
     void startGame();
-    
+
 };
 
 #endif
