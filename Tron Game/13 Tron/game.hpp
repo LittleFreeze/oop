@@ -3,6 +3,7 @@
 
 #include "board.hpp"
 #include "player.hpp"
+#include "eventFramework.hpp"
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -16,6 +17,10 @@ private:
     Sprite *sprite;
     RenderTexture *t;
     Color colorList [4] = {Color::Red,Color::Blue,Color::Green,Color::Yellow};
+
+    eventFramework *eventF;
+
+    void drawFrame();
 public:
     void setupGame();
     void startGame();
