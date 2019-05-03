@@ -6,3 +6,6 @@ I also added functions create the classes and have them interact with each other
 Update 4/9/2019
 I added a jump function mapped to spacebar and numpad0 which causes the player's bike to disappear for 10 ticks before reappearing.
 I also moddified the code to generate two randomly collored bikes instead of the red and green.
+
+Update 5/2/2019
+I created an event framework and made changes to the code to use it.
